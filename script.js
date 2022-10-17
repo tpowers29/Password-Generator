@@ -23,7 +23,29 @@ function generatePassword(){
    if(!acceptU && !acceptN && !acceptS && !acceptT){
    return "Please select at least one option"
    }
-  
+
+  var userChoiceLetters = []
+  if(acceptN){
+    userChoiceLetters += "1234567890"
+  }
+  if(acceptU){
+    userChoiceLetters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  }
+  if(acceptT){
+    userChoiceLetters += "abcdefghijklmnopqrstuvwxyz"
+  }
+  if(acceptS){
+    userChoiceLetters += "!@#$%^&*()"
+  }
+  console.log(userChoiceLetters);
+  var password =""
+  for(let i=0;i<passwordLen;i++){
+    var index= Math.floor(Math.random() * userChoiceLetters.length)
+    password += userChoiceLetters[index]
+    console.log(password)
+  }
+  return password
 }
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
